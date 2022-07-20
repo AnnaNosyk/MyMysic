@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		1791EEE928858A3200C35E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEE828858A3200C35E62 /* AppDelegate.swift */; };
 		1791EEEB28858A3200C35E62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEEA28858A3200C35E62 /* SceneDelegate.swift */; };
-		1791EEED28858A3200C35E62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEEC28858A3200C35E62 /* ViewController.swift */; };
+		1791EEED28858A3200C35E62 /* MyMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEEC28858A3200C35E62 /* MyMusicVC.swift */; };
 		1791EEF028858A3200C35E62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1791EEEE28858A3200C35E62 /* Main.storyboard */; };
 		1791EEF228858A3300C35E62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1791EEF128858A3300C35E62 /* Assets.xcassets */; };
 		1791EEF528858A3300C35E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1791EEF328858A3300C35E62 /* LaunchScreen.storyboard */; };
+		1791EEFD28859EA900C35E62 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEFC28859EA900C35E62 /* MainTabBarC.swift */; };
+		1791EEFF2885A3E900C35E62 /* AllMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */; };
+		1791EF01288849F300C35E62 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF00288849F300C35E62 /* SearchResponse.swift */; };
+		31F15A4BC0B76BC3C4A01DBE /* Pods_MyMysic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DDF356730227379238F1AA /* Pods_MyMysic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1791EEE528858A3200C35E62 /* MyMysic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMysic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1791EEE828858A3200C35E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1791EEEA28858A3200C35E62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1791EEEC28858A3200C35E62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1791EEEC28858A3200C35E62 /* MyMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicVC.swift; sourceTree = "<group>"; };
 		1791EEEF28858A3200C35E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1791EEF128858A3300C35E62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1791EEF428858A3300C35E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1791EEF628858A3300C35E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1791EEFC28859EA900C35E62 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
+		1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicVC.swift; sourceTree = "<group>"; };
+		1791EF00288849F300C35E62 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		18DDF356730227379238F1AA /* Pods_MyMysic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMysic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C369B4881EA77D540CD04F1A /* Pods-MyMysic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.debug.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.debug.xcconfig"; sourceTree = "<group>"; };
+		D3552AA5F1BA772AC7710D6B /* Pods-MyMysic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.release.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F15A4BC0B76BC3C4A01DBE /* Pods_MyMysic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +53,8 @@
 			children = (
 				1791EEE728858A3200C35E62 /* MyMysic */,
 				1791EEE628858A3200C35E62 /* Products */,
+				A8F62EEA65E28233B9DBE664 /* Pods */,
+				2E1636BDCC472F3D86339CBD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +71,33 @@
 			children = (
 				1791EEE828858A3200C35E62 /* AppDelegate.swift */,
 				1791EEEA28858A3200C35E62 /* SceneDelegate.swift */,
-				1791EEEC28858A3200C35E62 /* ViewController.swift */,
+				1791EEEC28858A3200C35E62 /* MyMusicVC.swift */,
+				1791EEFC28859EA900C35E62 /* MainTabBarC.swift */,
+				1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */,
+				1791EF00288849F300C35E62 /* SearchResponse.swift */,
 				1791EEEE28858A3200C35E62 /* Main.storyboard */,
 				1791EEF128858A3300C35E62 /* Assets.xcassets */,
 				1791EEF328858A3300C35E62 /* LaunchScreen.storyboard */,
 				1791EEF628858A3300C35E62 /* Info.plist */,
 			);
 			path = MyMysic;
+			sourceTree = "<group>";
+		};
+		2E1636BDCC472F3D86339CBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18DDF356730227379238F1AA /* Pods_MyMysic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8F62EEA65E28233B9DBE664 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C369B4881EA77D540CD04F1A /* Pods-MyMysic.debug.xcconfig */,
+				D3552AA5F1BA772AC7710D6B /* Pods-MyMysic.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1791EEF928858A3300C35E62 /* Build configuration list for PBXNativeTarget "MyMysic" */;
 			buildPhases = (
+				3F0578DFC3B9E2785036FA6B /* [CP] Check Pods Manifest.lock */,
 				1791EEE128858A3200C35E62 /* Sources */,
 				1791EEE228858A3200C35E62 /* Frameworks */,
 				1791EEE328858A3200C35E62 /* Resources */,
+				24E16ACD38B18A07B0110F39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +168,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24E16ACD38B18A07B0110F39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMysic/Pods-MyMysic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMysic/Pods-MyMysic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyMysic/Pods-MyMysic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F0578DFC3B9E2785036FA6B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyMysic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1791EEE128858A3200C35E62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1791EEED28858A3200C35E62 /* ViewController.swift in Sources */,
+				1791EF01288849F300C35E62 /* SearchResponse.swift in Sources */,
+				1791EEFF2885A3E900C35E62 /* AllMusicVC.swift in Sources */,
+				1791EEFD28859EA900C35E62 /* MainTabBarC.swift in Sources */,
+				1791EEED28858A3200C35E62 /* MyMusicVC.swift in Sources */,
 				1791EEE928858A3200C35E62 /* AppDelegate.swift in Sources */,
 				1791EEEB28858A3200C35E62 /* SceneDelegate.swift in Sources */,
 			);
@@ -284,6 +364,7 @@
 		};
 		1791EEFA28858A3300C35E62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C369B4881EA77D540CD04F1A /* Pods-MyMysic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +393,7 @@
 		};
 		1791EEFB28858A3300C35E62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3552AA5F1BA772AC7710D6B /* Pods-MyMysic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

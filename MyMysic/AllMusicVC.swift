@@ -9,8 +9,10 @@ import UIKit
 import Alamofire
 
 class AllMusicVC: UITableViewController {
-    
     let cellId = "AllMusicCell"
+    
+    
+    private let networkService = NetworkService()
     private var timer: Timer?
     let searchController = UISearchController(searchResultsController: nil)
     var songs = [Song]()
@@ -29,28 +31,7 @@ class AllMusicVC: UITableViewController {
     }
     
     private func getData(text: String) {
-        let url = "https://itunes.apple.com/search"
-        let parametrs = ["term":"\(text)",
-                         "limit":"50"]
-        // get request
-        AF.request(url, method: .get, parameters: parametrs, encoding: URLEncoding.default, headers: nil).responseData { data in
-            if let error = data.error {
-                print("Error received requestiong data: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data.data else { return }
-            //decode data
-            let decoder = JSONDecoder()
-            do {
-                let items = try decoder.decode( SearchResponse.self, from: data)
-                self.songs = items.results
-                self.tableView.reloadData()
-                
-            } catch let error  {
-                print("Failed to decode JSON", error )
-            }
-        }
+
         
     }
     
@@ -126,8 +107,11 @@ extension AllMusicVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
-        timer =  Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [self] _ in
-            getData(text: searchText)
+        timer =  Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: {  _ in
+            self.networkService.getData(text: searchText) { [weak self] results in
+                self?.songs = results?.results ?? []
+                self?.tableView.reloadData()
+            }
         })
     
     }

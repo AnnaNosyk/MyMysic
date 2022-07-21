@@ -16,6 +16,14 @@
 		1791EEFD28859EA900C35E62 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEFC28859EA900C35E62 /* MainTabBarC.swift */; };
 		1791EEFF2885A3E900C35E62 /* AllMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */; };
 		1791EF01288849F300C35E62 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF00288849F300C35E62 /* SearchResponse.swift */; };
+		1791EF032888B31900C35E62 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF022888B31900C35E62 /* NetworkService.swift */; };
+		1791EF0C2888BC5400C35E62 /* AllMusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF052888BC5400C35E62 /* AllMusicPresenter.swift */; };
+		1791EF0D2888BC5400C35E62 /* AllMusicWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF062888BC5400C35E62 /* AllMusicWorker.swift */; };
+		1791EF0E2888BC5400C35E62 /* AllMusicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF072888BC5400C35E62 /* AllMusicRouter.swift */; };
+		1791EF0F2888BC5400C35E62 /* AllMusicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF082888BC5400C35E62 /* AllMusicModels.swift */; };
+		1791EF102888BC5400C35E62 /* AllMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF092888BC5400C35E62 /* AllMusicViewController.swift */; };
+		1791EF112888BC5400C35E62 /* AllMusicInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF0A2888BC5400C35E62 /* AllMusicInteractor.swift */; };
+		1791EF122888BC5400C35E62 /* AllMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1791EF0B2888BC5400C35E62 /* AllMusicViewController.xib */; };
 		31F15A4BC0B76BC3C4A01DBE /* Pods_MyMysic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DDF356730227379238F1AA /* Pods_MyMysic.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +39,14 @@
 		1791EEFC28859EA900C35E62 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
 		1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicVC.swift; sourceTree = "<group>"; };
 		1791EF00288849F300C35E62 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		1791EF022888B31900C35E62 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1791EF052888BC5400C35E62 /* AllMusicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicPresenter.swift; sourceTree = "<group>"; };
+		1791EF062888BC5400C35E62 /* AllMusicWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicWorker.swift; sourceTree = "<group>"; };
+		1791EF072888BC5400C35E62 /* AllMusicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicRouter.swift; sourceTree = "<group>"; };
+		1791EF082888BC5400C35E62 /* AllMusicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicModels.swift; sourceTree = "<group>"; };
+		1791EF092888BC5400C35E62 /* AllMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicViewController.swift; sourceTree = "<group>"; };
+		1791EF0A2888BC5400C35E62 /* AllMusicInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMusicInteractor.swift; sourceTree = "<group>"; };
+		1791EF0B2888BC5400C35E62 /* AllMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllMusicViewController.xib; sourceTree = "<group>"; };
 		18DDF356730227379238F1AA /* Pods_MyMysic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMysic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C369B4881EA77D540CD04F1A /* Pods-MyMysic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.debug.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.debug.xcconfig"; sourceTree = "<group>"; };
 		D3552AA5F1BA772AC7710D6B /* Pods-MyMysic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.release.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,9 +87,11 @@
 			children = (
 				1791EEE828858A3200C35E62 /* AppDelegate.swift */,
 				1791EEEA28858A3200C35E62 /* SceneDelegate.swift */,
+				1791EF042888BC0C00C35E62 /* AllMusic */,
 				1791EEEC28858A3200C35E62 /* MyMusicVC.swift */,
 				1791EEFC28859EA900C35E62 /* MainTabBarC.swift */,
 				1791EEFE2885A3E900C35E62 /* AllMusicVC.swift */,
+				1791EF132888BCB200C35E62 /* Services */,
 				1791EF00288849F300C35E62 /* SearchResponse.swift */,
 				1791EEEE28858A3200C35E62 /* Main.storyboard */,
 				1791EEF128858A3300C35E62 /* Assets.xcassets */,
@@ -81,6 +99,28 @@
 				1791EEF628858A3300C35E62 /* Info.plist */,
 			);
 			path = MyMysic;
+			sourceTree = "<group>";
+		};
+		1791EF042888BC0C00C35E62 /* AllMusic */ = {
+			isa = PBXGroup;
+			children = (
+				1791EF0B2888BC5400C35E62 /* AllMusicViewController.xib */,
+				1791EF092888BC5400C35E62 /* AllMusicViewController.swift */,
+				1791EF0A2888BC5400C35E62 /* AllMusicInteractor.swift */,
+				1791EF052888BC5400C35E62 /* AllMusicPresenter.swift */,
+				1791EF082888BC5400C35E62 /* AllMusicModels.swift */,
+				1791EF062888BC5400C35E62 /* AllMusicWorker.swift */,
+				1791EF072888BC5400C35E62 /* AllMusicRouter.swift */,
+			);
+			path = AllMusic;
+			sourceTree = "<group>";
+		};
+		1791EF132888BCB200C35E62 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1791EF022888B31900C35E62 /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		2E1636BDCC472F3D86339CBD /* Frameworks */ = {
@@ -160,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1791EF122888BC5400C35E62 /* AllMusicViewController.xib in Resources */,
 				1791EEF528858A3300C35E62 /* LaunchScreen.storyboard in Resources */,
 				1791EEF228858A3300C35E62 /* Assets.xcassets in Resources */,
 				1791EEF028858A3200C35E62 /* Main.storyboard in Resources */,
@@ -219,8 +260,15 @@
 				1791EEFF2885A3E900C35E62 /* AllMusicVC.swift in Sources */,
 				1791EEFD28859EA900C35E62 /* MainTabBarC.swift in Sources */,
 				1791EEED28858A3200C35E62 /* MyMusicVC.swift in Sources */,
+				1791EF102888BC5400C35E62 /* AllMusicViewController.swift in Sources */,
+				1791EF112888BC5400C35E62 /* AllMusicInteractor.swift in Sources */,
+				1791EF0C2888BC5400C35E62 /* AllMusicPresenter.swift in Sources */,
 				1791EEE928858A3200C35E62 /* AppDelegate.swift in Sources */,
 				1791EEEB28858A3200C35E62 /* SceneDelegate.swift in Sources */,
+				1791EF032888B31900C35E62 /* NetworkService.swift in Sources */,
+				1791EF0E2888BC5400C35E62 /* AllMusicRouter.swift in Sources */,
+				1791EF0F2888BC5400C35E62 /* AllMusicModels.swift in Sources */,
+				1791EF0D2888BC5400C35E62 /* AllMusicWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

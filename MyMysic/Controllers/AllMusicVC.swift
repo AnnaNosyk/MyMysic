@@ -12,7 +12,7 @@ class AllMusicVC: UITableViewController {
     let cellId = "AllMusicCell"
     
     
-    private let networkService = NetworkService()
+    private let networkService = NetworkManager()
     private var timer: Timer?
     let searchController = UISearchController(searchResultsController: nil)
     var songs = [Song]()

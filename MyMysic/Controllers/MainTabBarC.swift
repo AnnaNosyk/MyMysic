@@ -14,13 +14,15 @@ class MainTabBarC: UITabBarController {
     let searchIcon = UIImage(systemName: "magnifyingglass")
     let musicIcon = UIImage(systemName: "music.quarternote.3")
     
+    let allMusicVC: AllMusicViewController = AllMusicViewController.loadFromStoryboard()
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        viewControllers = [ generateNavigationController(rootVc: allMusic, navigTitle: "All music list", title: "Search music", image: searchIcon!),
+        viewControllers = [ generateNavigationController(rootVc: allMusicVC, navigTitle: "All music list", title: "Search music", image: searchIcon!),
                             generateNavigationController(rootVc: myMusic, navigTitle: "My music list", title: "My music", image: musicIcon!)
         ]
     

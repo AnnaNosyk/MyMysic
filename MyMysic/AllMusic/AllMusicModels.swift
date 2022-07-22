@@ -9,23 +9,38 @@
 import UIKit
 
 enum AllMusic {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case some
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case some
+                case getSongs(text:String)
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case some
+                case presentSongs(response: SongsResponse?)
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case some
+                case displaySongs(viewModel: AllMusicViewModel)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case some
-      }
+    
+}
+
+struct AllMusicViewModel {
+    struct Cell: SongViewModelProtocol {
+        var imageUrlString: String?
+        var songName: String
+        var albumName: String
+        var artistName: String
+        var previewUrl: String?
     }
-    struct ViewModel {
-      enum ViewModelData {
-        case some
-      }
-    }
-  }
-  
+    
+    let cells: [Cell]
 }

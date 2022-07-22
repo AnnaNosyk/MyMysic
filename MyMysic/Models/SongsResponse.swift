@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchResponse: Decodable {
+struct SongsResponse: Decodable {
     var resultCount: Int
     var results: [Song]
 }
@@ -17,4 +17,5 @@ struct Song: Decodable {
     var collectionName: String?
     var artistName: String
     var artworkUrl100: String?
+    var previewUrl: String?
 }

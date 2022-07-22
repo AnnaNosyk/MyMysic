@@ -14,6 +14,7 @@ protocol AllMusicBusinessLogic {
 
 class AllMusicInteractor: AllMusicBusinessLogic {
 
+    var networkManager = NetworkManager()
   var presenter: AllMusicPresentationLogic?
   var service: AllMusicService?
   
@@ -21,6 +22,17 @@ class AllMusicInteractor: AllMusicBusinessLogic {
     if service == nil {
       service = AllMusicService()
     }
+      
+      switch request {
+ 
+      case .some:
+          print("interator.some")
+      case .getSongs(text: let text):
+          networkManager.getData(text: text) {[weak self] response in
+              self?.presenter?.presentData(response: AllMusic.Model.Response.ResponseType.presentSongs(response: response))
+          }
+          
+      }
   }
   
 }

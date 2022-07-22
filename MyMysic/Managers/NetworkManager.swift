@@ -8,9 +8,9 @@
 import UIKit
 import Alamofire
 
-class NetworkService {
+class NetworkManager {
     
-    func getData(text: String, completion: @escaping (SearchResponse?)-> Void) {
+    func getData(text: String, completion: @escaping (SongsResponse?)-> Void) {
         let url = "https://itunes.apple.com/search"
         let parametrs = ["term":"\(text)",
                          "limit":"50",
@@ -27,7 +27,7 @@ class NetworkService {
             //decode data
             let decoder = JSONDecoder()
             do {
-                let items = try decoder.decode( SearchResponse.self, from: data)
+                let items = try decoder.decode( SongsResponse.self, from: data)
                 completion(items)
             } catch let error  {
                 print("Failed to decode JSON", error )

@@ -18,15 +18,14 @@ class AllMusicPresenter: AllMusicPresentationLogic {
   func presentData(response: AllMusic.Model.Response.ResponseType) {
   
       switch response {
-    
-      case .some:
-          print("presenter.some")
       case .presentSongs(response: let result):
          let cells =  result?.results.map({ song in
               cellViewModel(from: song)
          }) ?? []
           let viewModel = AllMusicViewModel.init(cells: cells)
           viewController?.displayData(viewModel: AllMusic.Model.ViewModel.ViewModelData.displaySongs(viewModel: viewModel))
+      case .presentFooterView:
+          viewController?.displayData(viewModel: AllMusic.Model.ViewModel.ViewModelData.displayFooterView)
       }
   }
     

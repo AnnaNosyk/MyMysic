@@ -25,6 +25,7 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
     let searchController = UISearchController(searchResultsController: nil)
     private var viewModel = AllMusicViewModel.init(cells: [])
     private var timer: Timer?
+    private lazy var footerView = FooterView()
   
   // MARK: Setup
   
@@ -56,6 +57,7 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
     private func setupTableView() {
         let nib = UINib(nibName: "SongCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: SongViewCell.cellId)
+        tableView.tableFooterView = footerView
     }
     
     private func setupSearchBar() {
@@ -67,14 +69,27 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
   
   func displayData(viewModel: AllMusic.Model.ViewModel.ViewModelData) {
       switch viewModel {
-  
-      case .some:
-          print("viewcontroller.some")
       case .displaySongs(viewModel: let viewModel):
           self.viewModel = viewModel
           tableView.reloadData()
+          footerView.hideaAtivityIndicatorr()
+      case .displayFooterView:
+          footerView.showActivityIndicator()
       }
   }
+    
+    // for label when no items in tableview
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter search term ..."
+        label.textAlignment = .center
+        label.font = UIFont(name: "Helvetica", size: 19)
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return viewModel.cells.count > 0 ? 0 : 250
+    }
   
 }
 

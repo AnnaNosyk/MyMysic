@@ -13,20 +13,19 @@ enum AllMusic {
     enum Model {
         struct Request {
             enum RequestType {
-                case some
                 case getSongs(text:String)
             }
         }
         struct Response {
             enum ResponseType {
-                case some
                 case presentSongs(response: SongsResponse?)
+                case presentFooterView
             }
         }
         struct ViewModel {
             enum ViewModelData {
-                case some
                 case displaySongs(viewModel: AllMusicViewModel)
+                case displayFooterView
             }
         }
     }

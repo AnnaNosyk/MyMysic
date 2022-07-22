@@ -24,10 +24,8 @@ class AllMusicInteractor: AllMusicBusinessLogic {
     }
       
       switch request {
- 
-      case .some:
-          print("interator.some")
       case .getSongs(text: let text):
+          presenter?.presentData(response: AllMusic.Model.Response.ResponseType.presentFooterView)
           networkManager.getData(text: text) {[weak self] response in
               self?.presenter?.presentData(response: AllMusic.Model.Response.ResponseType.presentSongs(response: response))
           }

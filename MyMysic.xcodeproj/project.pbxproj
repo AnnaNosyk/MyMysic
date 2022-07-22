@@ -27,6 +27,7 @@
 		1791EF192889A3ED00C35E62 /* UIViewConroller + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF182889A3ED00C35E62 /* UIViewConroller + Storyboard.swift */; };
 		1791EF1C288ACCE000C35E62 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1791EF1B288ACCE000C35E62 /* SongCell.xib */; };
 		1791EF1E288ACD2200C35E62 /* SongViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF1D288ACD2200C35E62 /* SongViewCell.swift */; };
+		1791EF21288B40E800C35E62 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EF20288B40E700C35E62 /* FooterView.swift */; };
 		31F15A4BC0B76BC3C4A01DBE /* Pods_MyMysic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DDF356730227379238F1AA /* Pods_MyMysic.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		1791EF182889A3ED00C35E62 /* UIViewConroller + Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewConroller + Storyboard.swift"; sourceTree = "<group>"; };
 		1791EF1B288ACCE000C35E62 /* SongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		1791EF1D288ACD2200C35E62 /* SongViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewCell.swift; sourceTree = "<group>"; };
+		1791EF20288B40E700C35E62 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		18DDF356730227379238F1AA /* Pods_MyMysic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMysic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C369B4881EA77D540CD04F1A /* Pods-MyMysic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.debug.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.debug.xcconfig"; sourceTree = "<group>"; };
 		D3552AA5F1BA772AC7710D6B /* Pods-MyMysic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMysic.release.xcconfig"; path = "Target Support Files/Pods-MyMysic/Pods-MyMysic.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		1791EF042888BC0C00C35E62 /* AllMusic */ = {
 			isa = PBXGroup;
 			children = (
+				1791EF22288B40F100C35E62 /* FooterView */,
 				1791EF1A288ACCC100C35E62 /* Cell */,
 				1791EF142889999600C35E62 /* AllMusicViewController.storyboard */,
 				1791EF092888BC5400C35E62 /* AllMusicViewController.swift */,
@@ -162,6 +165,14 @@
 				1791EF00288849F300C35E62 /* SongsResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1791EF22288B40F100C35E62 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				1791EF20288B40E700C35E62 /* FooterView.swift */,
+			);
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 		2E1636BDCC472F3D86339CBD /* Frameworks */ = {
@@ -303,6 +314,7 @@
 				1791EEFD28859EA900C35E62 /* MainTabBarC.swift in Sources */,
 				1791EEED28858A3200C35E62 /* MyMusicVC.swift in Sources */,
 				1791EF102888BC5400C35E62 /* AllMusicViewController.swift in Sources */,
+				1791EF21288B40E800C35E62 /* FooterView.swift in Sources */,
 				1791EF112888BC5400C35E62 /* AllMusicInteractor.swift in Sources */,
 				1791EF0C2888BC5400C35E62 /* AllMusicPresenter.swift in Sources */,
 				1791EEE928858A3200C35E62 /* AppDelegate.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 protocol SongViewModelProtocol {
     var imageUrlString: String? { get }
     var songName: String { get }
@@ -25,12 +26,14 @@ class SongViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        songImage.image = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -39,6 +42,8 @@ class SongViewCell: UITableViewCell {
         songName.text = viewModel.songName
         authorName.text = viewModel.artistName
         albumName.text = viewModel.albumName
+        guard let url = URL(string: viewModel.imageUrlString ?? "") else {return}
+        songImage.sd_setImage(with: url, completed: nil)
     }
 
 }

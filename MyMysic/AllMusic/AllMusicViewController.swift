@@ -118,6 +118,15 @@ extension AllMusicViewController: UISearchBarDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let songViewModel = viewModel.cells[indexPath.row]
+        let window = UIApplication.shared.keyWindow 
+        let songDetailView = Bundle.main.loadNibNamed("SongDetailView", owner: self, options: nil)?.first as! SongDetailView
+        songDetailView.set(viewModel: songViewModel)
+       
+        window?.addSubview(songDetailView)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }

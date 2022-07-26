@@ -7,18 +7,14 @@
 //
 
 import UIKit
-
-
-protocol AllMusicDisplayLogic: class {
+protocol AllMusicDisplayLogic: AnyObject {
   func displayData(viewModel: AllMusic.Model.ViewModel.ViewModelData)
-    
 }
 
 class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
 
   var interactor: AllMusicBusinessLogic?
   var router: (NSObjectProtocol & AllMusicRoutingLogic)?
-
     
     @IBOutlet weak var tableView: UITableView!
     let cellId = "AllMusicCell"
@@ -78,18 +74,7 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
       }
   }
     
-    // for label when no items in tableview
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Please enter search term ..."
-        label.textAlignment = .center
-        label.font = UIFont(name: "Helvetica", size: 19)
-        return label
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return viewModel.cells.count > 0 ? 0 : 250
-    }
+
   
 }
 
@@ -106,8 +91,34 @@ extension AllMusicViewController: UITableViewDelegate, UITableViewDataSource {
         cell.songImage.backgroundColor = .yellow
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let songViewModel = viewModel.cells[indexPath.row]
+        let window = UIApplication.shared.keyWindow
+        let songDetailView: SongDetailView = SongDetailView.loadFromNib()
+        songDetailView.set(viewModel: songViewModel)
+        songDetailView.delegate = self
+        window?.addSubview(songDetailView)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
+    }
+    // for label when no items in tableview
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter search term ..."
+        label.textAlignment = .center
+        label.font = UIFont(name: "Helvetica", size: 19)
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return viewModel.cells.count > 0 ? 0 : 250
+    }
 }
-// MARK: -
+
+// MARK: - UISearchBarDelegate
 extension AllMusicViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -115,19 +126,37 @@ extension AllMusicViewController: UISearchBarDelegate {
         timer =  Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             self.interactor?.makeRequest(request: AllMusic.Model.Request.RequestType.getSongs(text: searchText))
         })
+    }
+}
+ // MARK: - SongMovingDelegate
+extension AllMusicViewController: SongMovingDelegate {
+    
+    private func getSong(isNext: Bool) ->AllMusicViewModel.Cell? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
+        tableView.deselectRow(at: indexPath, animated: true)
+        var nextIndexPath: IndexPath!
+        if isNext {
+            nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            if nextIndexPath.row == viewModel.cells.count {
+                nextIndexPath.row = 0
+            }
+        } else {
+            nextIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            if nextIndexPath.row == -1 {
+                nextIndexPath.row = viewModel.cells.count - 1
+            }
+        }
+        tableView.selectRow(at: nextIndexPath, animated: true, scrollPosition: .none)
+        let cellViewModel = viewModel.cells[nextIndexPath.row]
+        return cellViewModel
         
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let songViewModel = viewModel.cells[indexPath.row]
-        let window = UIApplication.shared.keyWindow 
-        let songDetailView = Bundle.main.loadNibNamed("SongDetailView", owner: self, options: nil)?.first as! SongDetailView
-        songDetailView.set(viewModel: songViewModel)
-       
-        window?.addSubview(songDetailView)
+    func moveBack() -> AllMusicViewModel.Cell? {
+        return getSong(isNext: false)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
+    func moveForward() -> AllMusicViewModel.Cell? {
+        return getSong(isNext: true)
     }
+    
 }

@@ -25,6 +25,8 @@ class MainTabBarC: UITabBarController {
         viewControllers = [ generateNavigationController(rootVc: allMusicVC, navigTitle: "All music list", title: "Search music", image: searchIcon!),
                             generateNavigationController(rootVc: myMusic, navigTitle: "My music list", title: "My music", image: musicIcon!)
         ]
+        
+        setupAnimation()
     
     }
     
@@ -38,6 +40,10 @@ class MainTabBarC: UITabBarController {
     }
     
 
-
+    private func setupAnimation() {
+        let songDetailView: SongDetailView = SongDetailView.loadFromNib()
+        view.insertSubview(songDetailView, belowSubview: tabBar)
+        //auto layout for animation
+    }
 
 }

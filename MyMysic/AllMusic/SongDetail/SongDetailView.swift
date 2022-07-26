@@ -9,8 +9,12 @@ import UIKit
 import SDWebImage
 import AVKit
 
-class SongDetailView: UIView {
+protocol SongMovingDelegate: AnyObject {
+    func moveBack() -> AllMusicViewModel.Cell?
+    func moveForward() -> AllMusicViewModel.Cell?
+}
 
+class SongDetailView: UIView {
     @IBOutlet weak var songImage: UIImageView!
     @IBOutlet weak var timeSongSlider: UISlider!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -20,6 +24,8 @@ class SongDetailView: UIView {
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var soundSlider: UISlider!
+    
+    weak var delegate: SongMovingDelegate?
     
     let player: AVPlayer = {
         let player = AVPlayer()
@@ -130,9 +136,11 @@ class SongDetailView: UIView {
     // 0 - back, 1- play, 2-forward
         
         switch sender.tag {
-        case 0 :
-            print("back")
-        case 1:
+        case 0 : // previous song
+            let songViewModel = delegate?.moveBack()
+            guard let previousSong = songViewModel else {return}
+            set(viewModel: previousSong)
+        case 1: // play, pause song
             if player.timeControlStatus == .paused {
                 player.play()
                 playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
@@ -142,8 +150,10 @@ class SongDetailView: UIView {
                 playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                 reduceSongImage()
             }
-        case 2:
-            print("forward")
+        case 2: // next song
+            let songViewModel = delegate?.moveForward()
+            guard let nextSong = songViewModel else {return}
+            set(viewModel: nextSong)
             
         default:
             break

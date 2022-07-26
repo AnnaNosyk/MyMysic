@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175786B528903ABE00A9AC2F /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175786B428903ABE00A9AC2F /* UIView + Extension.swift */; };
 		17775C07288F40F800F2D86F /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17775C06288F40F800F2D86F /* CMTime + Extension.swift */; };
 		1791EEE928858A3200C35E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEE828858A3200C35E62 /* AppDelegate.swift */; };
 		1791EEEB28858A3200C35E62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1791EEEA28858A3200C35E62 /* SceneDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		175786B428903ABE00A9AC2F /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		17775C06288F40F800F2D86F /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		1791EEE528858A3200C35E62 /* MyMysic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMysic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1791EEE828858A3200C35E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				1791EF182889A3ED00C35E62 /* UIViewConroller + Storyboard.swift */,
 				17775C06288F40F800F2D86F /* CMTime + Extension.swift */,
+				175786B428903ABE00A9AC2F /* UIView + Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				1791EF27288EC00500C35E62 /* SongDetailView.swift in Sources */,
 				1791EF0E2888BC5400C35E62 /* AllMusicRouter.swift in Sources */,
 				1791EF0F2888BC5400C35E62 /* AllMusicModels.swift in Sources */,
+				175786B528903ABE00A9AC2F /* UIView + Extension.swift in Sources */,
 				1791EF0D2888BC5400C35E62 /* AllMusicWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

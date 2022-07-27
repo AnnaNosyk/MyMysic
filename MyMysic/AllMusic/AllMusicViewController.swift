@@ -22,6 +22,7 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
     private var viewModel = AllMusicViewModel.init(cells: [])
     private var timer: Timer?
     private lazy var footerView = FooterView()
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
   
   // MARK: Setup
   
@@ -94,11 +95,12 @@ extension AllMusicViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let songViewModel = viewModel.cells[indexPath.row]
-        let window = UIApplication.shared.keyWindow
-        let songDetailView: SongDetailView = SongDetailView.loadFromNib()
-        songDetailView.set(viewModel: songViewModel)
-        songDetailView.delegate = self
-        window?.addSubview(songDetailView)
+        self.tabBarDelegate?.maxmizeSongDetailView(viewModel: songViewModel)
+//        let window = UIApplication.shared.keyWindow
+//        let songDetailView: SongDetailView = SongDetailView.loadFromNib()
+//        songDetailView.set(viewModel: songViewModel)
+//        songDetailView.delegate = self
+//        window?.addSubview(songDetailView)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

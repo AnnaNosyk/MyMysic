@@ -15,6 +15,18 @@ protocol SongMovingDelegate: AnyObject {
 }
 
 class SongDetailView: UIView {
+    
+    @IBOutlet weak var miniPlayerView: UIView!
+    
+    @IBOutlet weak var miniPlayerSongName: UILabel!
+    @IBOutlet weak var miniplayerImage: UIImageView!
+    
+    @IBOutlet weak var miniPlayerNextSongButton: UIButton!
+    
+    @IBOutlet weak var miniPlayerPlayButton: UIButton!
+    
+    
+    @IBOutlet weak var fullScreenStackView: UIStackView!
     @IBOutlet weak var songImage: UIImageView!
     @IBOutlet weak var timeSongSlider: UISlider!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -25,7 +37,9 @@ class SongDetailView: UIView {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var soundSlider: UISlider!
     
+    @IBOutlet weak var dropDownButton: UIButton!
     weak var delegate: SongMovingDelegate?
+    weak var animationDelegate: MainTabBarControllerDelegate?
     
     let player: AVPlayer = {
         let player = AVPlayer()
@@ -44,19 +58,20 @@ class SongDetailView: UIView {
    // MARK: - Setup
     func set(viewModel: AllMusicViewModel.Cell) {
         songName.text = viewModel.songName
+        miniPlayerSongName.text = viewModel.songName
         authorName.text = viewModel.artistName
         playSong(previewUrl: viewModel.previewUrl)
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        miniPlayerPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         monitorStartTime()
         observeSongTime()
         // for image 600x600 size
-        let string600 = viewModel.imageUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
+        let string600 = viewModel.imageUrlString?.replacingOccurrences(of: "100x100", with: "500x500")
         guard let url = URL(string: string600 ?? "") else { return }
         songImage.sd_setImage(with: url, completed: nil)
+        miniplayerImage.sd_setImage(with: url, completed: nil)
     }
-    
-    
-    
-    
+
     private func playSong(previewUrl: String?) {
         guard let url = URL(string: previewUrl ?? "") else {return}
         let playerItem = AVPlayerItem(url: url)
@@ -86,8 +101,8 @@ class SongDetailView: UIView {
         }
     }
     
+    //change time song with the slider
     private func updateSongTimeSlider() {
-        
         let timeCurrent = CMTimeGetSeconds(player.currentTime())
         let songTimeDuration =  CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
         let percentage = timeCurrent / songTimeDuration
@@ -111,7 +126,8 @@ class SongDetailView: UIView {
     
     // MARK: - Actions
     @IBAction func dropDownAction(_ sender: UIButton) {
-        self.removeFromSuperview()
+        self.animationDelegate?.minimizeSongDetailView()
+       // self.removeFromSuperview()
     }
     
     
@@ -133,24 +149,26 @@ class SongDetailView: UIView {
     }
     
     @IBAction func changeSongsAction(_ sender: UIButton) {
-    // 0 - back, 1- play, 2-forward
+    // 0 - back, 1- play, 2-forward 3 -play mini, 4-forward mini
         
         switch sender.tag {
         case 0 : // previous song
             let songViewModel = delegate?.moveBack()
             guard let previousSong = songViewModel else {return}
             set(viewModel: previousSong)
-        case 1: // play, pause song
+        case 1,3: // play, pause song
             if player.timeControlStatus == .paused {
                 player.play()
                 playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                miniPlayerPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
                 enlargeSongImage()
             } else {
                 player.pause()
                 playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                miniPlayerPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                 reduceSongImage()
             }
-        case 2: // next song
+        case 2,4: // next song
             let songViewModel = delegate?.moveForward()
             guard let nextSong = songViewModel else {return}
             set(viewModel: nextSong)

@@ -53,6 +53,7 @@ class SongDetailView: UIView {
         let scale = 0.8
         songImage.transform = CGAffineTransform(scaleX: scale, y: scale)
         soundSlider.value = 0.2
+        setupGesture()
     }
     
    // MARK: - Setup
@@ -70,7 +71,85 @@ class SongDetailView: UIView {
         guard let url = URL(string: string600 ?? "") else { return }
         songImage.sd_setImage(with: url, completed: nil)
         miniplayerImage.sd_setImage(with: url, completed: nil)
+        
     }
+    
+  //MARK: - Setup gestures
+    private func setupGesture() {
+        miniPlayerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fullScreenViewTapGesture)))
+        miniPlayerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(fullScreenPan)))
+        // for swipe down songDetail view
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(miniPlayerDismissalPan)))
+    }
+    
+    
+    @objc func fullScreenViewTapGesture() {
+        self.animationDelegate?.maxmizeSongDetailView(viewModel: nil)
+    }
+    
+    @objc func fullScreenPan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            fullScreenPanChanged(gesture: gesture)
+        case .ended:
+            fullScreenPanEnded(gesture: gesture)
+        @unknown default:
+            print("unknown default")
+        }
+    }
+    
+    private func fullScreenPanChanged(gesture: UIPanGestureRecognizer) {
+        //heigh of view == where finger of user
+        let translation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+       
+        let newAlpha = 1 + translation.y / 200
+        self.miniPlayerView.alpha = newAlpha < 0 ? 0 : newAlpha
+        self.fullScreenStackView.alpha = -translation.y / 200
+    }
+    
+    private func fullScreenPanEnded(gesture: UIPanGestureRecognizer) {
+        //heigh of view == where finger of user
+        let translation = gesture.translation(in: self.superview)
+        //speed of gesture
+        let velocity = gesture.velocity(in: self.superview)
+        //animste for songDetailView (go up or down) - where closer finger of user
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.transform = .identity
+            if translation.y < -200 || velocity.y < -500 {
+                self.animationDelegate?.maxmizeSongDetailView(viewModel: nil)
+            } else {
+                self.miniPlayerView.alpha = 1
+                self.fullScreenStackView.alpha = 0
+            }
+        }, completion: nil)
+    }
+    
+    
+    @objc func miniPlayerDismissalPan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: self.superview)
+            fullScreenStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+
+        case .ended:
+            let translation = gesture.translation(in: self.superview)
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseOut,
+                           animations: {
+                self.fullScreenStackView.transform = .identity
+                if translation.y > 50 {
+                    self.animationDelegate?.minimizeSongDetailView()
+                }
+            }, completion: nil)
+        @unknown default:
+            print("@unknown default")
+        }
+    }
+    
 
     private func playSong(previewUrl: String?) {
         guard let url = URL(string: previewUrl ?? "") else {return}

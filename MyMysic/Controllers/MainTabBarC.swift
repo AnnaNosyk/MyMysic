@@ -72,11 +72,10 @@ class MainTabBarC: UITabBarController {
     
 }
 
-
 extension MainTabBarC: MainTabBarControllerDelegate {
     func maxmizeSongDetailView(viewModel: AllMusicViewModel.Cell?) {
-        maximizedTopAnchorConstraint.isActive = true
         minimizedTopAnchorConstraint.isActive = false
+        maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
         UIView.animate(withDuration: 0.5,

@@ -40,9 +40,19 @@
                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-Op-WlX">
+                        <rect key="frame" x="368" y="32" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                        <connections>
+                            <action selector="addSongToMyList:" destination="s64-ZA-3pY" eventType="touchUpInside" id="Xfc-3T-RDw"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addSongBUtton" destination="x1e-Op-WlX" id="HSt-JO-9fj"/>
                 <outlet property="albumName" destination="wLP-se-Tu7" id="SWp-GP-6o8"/>
                 <outlet property="authorName" destination="QOl-C8-g5H" id="UXO-PN-eLV"/>
                 <outlet property="songImage" destination="22B-Ir-oGH" id="TUJ-d1-d1d"/>
@@ -51,4 +61,7 @@
             <point key="canvasLocation" x="85.507246376811594" y="71.651785714285708"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

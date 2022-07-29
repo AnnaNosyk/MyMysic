@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol MainTabBarControllerDelegate: AnyObject {
     func minimizeSongDetailView()
@@ -14,12 +15,13 @@ protocol MainTabBarControllerDelegate: AnyObject {
 
 class MainTabBarC: UITabBarController {
     
-    let myMusic = MyMusicVC()
     let searchIcon = UIImage(systemName: "magnifyingglass")
     let musicIcon = UIImage(systemName: "music.quarternote.3")
-    
+    let myMusic: MyMusicVC = MyMusicVC.loadFromStoryboard()
     let allMusicVC: AllMusicViewController = AllMusicViewController.loadFromStoryboard()
+   
     
+   
     let songDetailView: SongDetailView = SongDetailView.loadFromNib()
     
     // for animation song detail view
@@ -28,17 +30,15 @@ class MainTabBarC: UITabBarController {
     private var bottomAnchorConstraint: NSLayoutConstraint!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewControllers = [ generateNavigationController(rootVc: allMusicVC, navigTitle: "All music list", title: "Search music", image: searchIcon!),
-                            generateNavigationController(rootVc: myMusic, navigTitle: "My music list", title: "My music", image: musicIcon!)
+
+        viewControllers = [ generateNavigationController(rootVc: myMusic, navigTitle: "My music list", title: "My music", image: musicIcon!), generateNavigationController(rootVc: allMusicVC, navigTitle: "All music list", title: "Search music", image: searchIcon!)
         ]
         
         setupDetailViewWithAnimation()
         allMusicVC.tabBarDelegate = self
+        myMusic.tabBarDelegate = self
         
     }
     
@@ -62,7 +62,6 @@ class MainTabBarC: UITabBarController {
         maximizedTopAnchorConstraint = songDetailView.topAnchor.constraint(equalTo: view.topAnchor,constant: view.frame.height)
         minimizedTopAnchorConstraint = songDetailView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
         bottomAnchorConstraint = songDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
-        
         bottomAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.isActive = true
         songDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -72,6 +71,7 @@ class MainTabBarC: UITabBarController {
     
 }
 
+//MARK: - MainTabBarControllerDelegate
 extension MainTabBarC: MainTabBarControllerDelegate {
     func maxmizeSongDetailView(viewModel: AllMusicViewModel.Cell?) {
         minimizedTopAnchorConstraint.isActive = false

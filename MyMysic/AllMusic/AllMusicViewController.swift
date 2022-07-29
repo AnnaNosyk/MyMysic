@@ -17,11 +17,13 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
   var router: (NSObjectProtocol & AllMusicRoutingLogic)?
     
     @IBOutlet weak var tableView: UITableView!
+    
     let cellId = "AllMusicCell"
     let searchController = UISearchController(searchResultsController: nil)
     private var viewModel = AllMusicViewModel.init(cells: [])
     private var timer: Timer?
     private lazy var footerView = FooterView()
+    
     weak var tabBarDelegate: MainTabBarControllerDelegate?
   
   // MARK: Setup
@@ -41,6 +43,7 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
   // MARK: Routing
   
 
+    
   
   // MARK: View lifecycle
   
@@ -50,6 +53,18 @@ class AllMusicViewController: UIViewController, AllMusicDisplayLogic {
       setupTableView()
       setupSearchBar()
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let keyWindow = UIApplication.shared.connectedScenes
+        .filter({$0.activationState == .foregroundActive})
+        .map({$0 as? UIWindowScene})
+        .compactMap({$0})
+        .first?.windows
+        .filter({$0.isKeyWindow}).first
+        let tabBarVC = keyWindow?.rootViewController as? MainTabBarC
+        tabBarVC?.songDetailView.delegate = self
+    }
     
     private func setupTableView() {
         let nib = UINib(nibName: "SongCell", bundle: nil)
@@ -96,11 +111,7 @@ extension AllMusicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let songViewModel = viewModel.cells[indexPath.row]
         self.tabBarDelegate?.maxmizeSongDetailView(viewModel: songViewModel)
-//        let window = UIApplication.shared.keyWindow
-//        let songDetailView: SongDetailView = SongDetailView.loadFromNib()
-//        songDetailView.set(viewModel: songViewModel)
-//        songDetailView.delegate = self
-//        window?.addSubview(songDetailView)
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

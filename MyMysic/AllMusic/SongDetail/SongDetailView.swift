@@ -17,12 +17,9 @@ protocol SongMovingDelegate: AnyObject {
 class SongDetailView: UIView {
     
     @IBOutlet weak var miniPlayerView: UIView!
-    
     @IBOutlet weak var miniPlayerSongName: UILabel!
     @IBOutlet weak var miniplayerImage: UIImageView!
-    
     @IBOutlet weak var miniPlayerNextSongButton: UIButton!
-    
     @IBOutlet weak var miniPlayerPlayButton: UIButton!
     
     
@@ -32,12 +29,12 @@ class SongDetailView: UIView {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var finishTimeLabel: UILabel!
     @IBOutlet weak var songName: UILabel!
-    
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var soundSlider: UISlider!
-    
     @IBOutlet weak var dropDownButton: UIButton!
+    
+    
     weak var delegate: SongMovingDelegate?
     weak var animationDelegate: MainTabBarControllerDelegate?
     
@@ -66,7 +63,7 @@ class SongDetailView: UIView {
         miniPlayerPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         monitorStartTime()
         observeSongTime()
-        // for image 600x600 size
+        // for image 500x500 size(transform from 100x100)
         let string600 = viewModel.imageUrlString?.replacingOccurrences(of: "100x100", with: "500x500")
         guard let url = URL(string: string600 ?? "") else { return }
         songImage.sd_setImage(with: url, completed: nil)

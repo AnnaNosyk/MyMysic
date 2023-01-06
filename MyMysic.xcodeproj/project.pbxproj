@@ -505,6 +505,8 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMysic/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "My music";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MyMusicVC;
@@ -515,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = A.N.MyMysic;
+				PRODUCT_BUNDLE_IDENTIFIER = A.N.MyMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -534,6 +536,8 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMysic/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "My music";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MyMusicVC;
@@ -544,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = A.N.MyMysic;
+				PRODUCT_BUNDLE_IDENTIFIER = A.N.MyMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
